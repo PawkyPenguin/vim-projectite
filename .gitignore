@@ -1,1 +1,5 @@
 *.swp
+*.py[cod]
+doc/tags
+.cache
+.mypy_cache
