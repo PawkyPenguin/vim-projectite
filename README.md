@@ -15,7 +15,7 @@ Then, when you have some project open:
 
 Personally, I would recommend only using the second command because the first form has the tendency to produce some duplicates. Here are the mappings I use:
 
-```vimscript
+```vim
 nnoremap <leader>so :Denite projectionist:source<CR>
 nnoremap <leader>te :Denite projectionist:test<CR>
 ```
