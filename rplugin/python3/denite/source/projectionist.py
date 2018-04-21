@@ -43,8 +43,6 @@ class Source(Base):
         if context['args'] and context['args'][0]:
             projectionist_type = context['args'][0]
 
-        print(projectionist_type)
-
         if projectionist_type == '':
             return self._gather_project_files(context)
         else:
