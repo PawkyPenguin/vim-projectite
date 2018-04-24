@@ -13,11 +13,11 @@ Then, when you have some project open:
 * `:Denite projectionist` to list candidates for all project files. The type of the file also is displayed along with its full path to disambiguate files that have the same name.
 * `:Denite projectionist:<type>` to list candidates for all project files with type *<type>*. For instance, if you have defined a *source* type in your projectionist configuration you can use `:Denite projectionist:source`.
 
-I would recommend only using the second command because the first form has the tendency to produce some duplicates. Here are the mappings I use:
+I personally only use the second variant because I usually already know what type of file I'm interested in. This way I can avoid listing other candidates that are useless to me. Here are the mappings I use:
 
 ```vim
-nnoremap <leader>so :Denite projectionist:source<CR>
-nnoremap <leader>te :Denite projectionist:test<CR>
+nnoremap <CR>s :Denite projectionist:source<CR>
+nnoremap <CR>t :Denite projectionist:test<CR>
 ```
 
-Note that you'll have to define them yourself: They are not included in the plugin to avoid polluting your mappings.
+Note that you'll have to define them yourself: They are not included in the plugin so that they don't interfere with your own mappings.
