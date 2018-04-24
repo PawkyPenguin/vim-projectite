@@ -52,26 +52,26 @@ class Source(Base):
         # TODO: Fix alignment for multiple sources
         candidates = []
         file_dict = self.vim.call('projectionist#list_project_files')
-        for category, files in file_dict.items():
-            for candidate in self._generate_candidates_from_files(context, files, category):
+        for proj_type, files in file_dict.items():
+            for candidate in self._generate_candidates_from_files(context, files, proj_type):
                 candidates.append(candidate)
 
         return candidates
 
     def _gather_files_of_type(self, context, projectionist_type):
         candidates = []
-        files = self.vim.call('projectionist#list_files_for_category', projectionist_type)
+        files = self.vim.call('projectionist#list_files_for_type', projectionist_type)
         candidates = [c for c in self._generate_candidates_from_files(context, files, projectionist_type)]
         return candidates
 
-    def _generate_candidates_from_files(self, context, files, category):
+    def _generate_candidates_from_files(self, context, files, proj_type):
         max_name_length = self._get_max_filename_length(files)
         for file_item in files:
             shortened_filename = self.vim.call('fnamemodify', file_item[1], ':~:.')
             yield({
                 'word': file_item[0],
                 'action__path': file_item[1],
-                'abbr': "{} [{}] ({})".format(file_item[0].ljust(max_name_length), category, shortened_filename),
+                'abbr': "{} [{}] ({})".format(file_item[0].ljust(max_name_length), proj_type, shortened_filename),
                 'kind': 'file'
             })
 
